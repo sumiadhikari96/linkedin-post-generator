@@ -954,7 +954,7 @@ footer p { margin: 0; }
   const PROVIDERS = {
     gemini: {
       label: 'Google Gemini', short: 'Gemini',
-      models: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.5-flash-lite'],
+      models: ['gemini-3.7-flash'],
       keyUrl: 'https://aistudio.google.com/apikey', keyHost: 'aistudio.google.com/apikey',
       placeholder: 'AIza...'
     }
@@ -972,6 +972,8 @@ footer p { margin: 0; }
     busy: false,
     current: null
   };
+
+  if (/^gemini-2\.5-/.test(state.models.gemini || '')) delete state.models.gemini;
 
   function persist() {
     if (state.remember) {
